@@ -23,11 +23,31 @@ int factorial(int n) {
 }
 
 bool isPrime(int num) {
-  return false;
+    // Números menores ou iguais a 1 não são primos
+  if (num <= 1) return false;
+  
+  // Verifica divisores de 2 até a raiz quadrada de n
+  for (int i = 2; i <= (num / i).floor(); i++) {
+    if (num % i == 0) return false; // Encontrou divisor: não é primo
+  }
+  
+  return true; // É primo
 }
 
 int sumOfDigits(int num) {
-  return num;
+  if (num.abs().toString().length == 1) {
+    throw ArgumentError("Numero com apenas um algorismo!");
+  }
+
+  int soma = 0;
+
+  String numeroStr = num.abs().toString();
+
+  for (int i = 0; i < numeroStr.length; i++) {
+    soma += int.parse(numeroStr[i]);
+  }
+
+  return soma;
 }
 
 void main() {
